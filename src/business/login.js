@@ -10,7 +10,7 @@ import http from "../global/request.js"
 export default {
 	 getSms(params,vm){
 		return new Promise((resolve,reject) => {
-			http.get("api/sms/",true,{
+			http.get(params,true,{
 				succ: function (res){
 					vm.msg += "callback succ";
 				},
@@ -30,7 +30,7 @@ export default {
 	},
 	userNameLogin(params,vm){
 		return new Promise((resolve,reject) => {
-			http.post("api/login",params,true,{
+			http.post("api/login",true,{
 				// uploadprogress : function (p){
 				// 	console.log(p);
 				// },
@@ -51,7 +51,7 @@ export default {
 	},
 	userNameLogin1(params,vm){
 		return new Promise((resolve,reject) => {
-			http.post("api/login",params,true);
+			http.post("api/login",params,{});
 		});
 	}
 }

@@ -35,7 +35,9 @@ export default {
       business.getSms({
         "phone" : "18513588911",
         "type" : 3
-      },this).finally(()=>{
+      },this).catch((err)=>{
+        alert(err);
+      }).finally(()=>{
         alert("请求结束");
       });
     },

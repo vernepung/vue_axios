@@ -34,10 +34,15 @@ const jsonHeader = {
 
 const normarTimeout = 3000000;
 
+const networkErrorMsg = "网络异常，请重试！";
+const businessNormalErrorMsg = "网络请求异常，请联系师训宝工作人员处理!";
+
 export default {
 	baseURL,
 	requestType,
 	normalHeaders,
 	jsonHeader,
-	normarTimeout
+	normarTimeout,
+	networkErrorMsg,
+	businessNormalErrorMsg
 }

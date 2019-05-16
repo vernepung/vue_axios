@@ -51,9 +51,10 @@ function sendRequest(type,url,params,canToast,obj) {
 	if (type == config.requestType.postJson) {
 		headers = config.jsonHeader;
 	}
-	if(typeof url == "undefined" || url == null || url == ""){ 
-			throw Error;
+	if(!((typeof url == 'string') && url.constructor == String && url.length > 0)){ 
+		throw Error("url 不允许为空");
 	}
+	// 演示多个不同axios示例如何处理
 	var a = type == config.requestType.get1 ? buOpenP : openPostInstance;
 	a({
 		url,
@@ -69,14 +70,16 @@ function sendRequest(type,url,params,canToast,obj) {
             }
         }
 	}).then(res => {
-		if (res.data.status == 200) {
+		if (res && res.data && res.data.status == 200) {
 			obj.succ && obj.succ(res.data);
 		}else{
+			var msg = res.data.message;
+			res.data.message = (msg && msg.length > 0) ? msg : config.businessNormalErrorMsg;
 			obj.fail && obj.fail(res.data);
 		}
 	}).catch(err => {
 		if (canToast) {
-			alert("测试网络异常，弹出");
+			alert(config.networkErrorMsg);
 		}
 		obj.error && obj.error(err);
 	}).finally(() => {
