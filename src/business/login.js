@@ -7,15 +7,33 @@
 
 import http from "../global/request.js"
 
+
+var vdata = {
+	obj : {a:"12"},
+	msg : 'Welcome to Your Vue.js App',
+	items : ["1","2","3","4"],
+	formName : {
+		name : ""
+	},
+	rules: {
+		name: [
+				{ required: true, message: '必须输入手机号', trigger: 'blur' },
+				// { type:'number', message: '11位数字', trigger: 'blur' }
+			]
+	}
+}
+
+
 export default {
+	vdata,
 	 getSms(params,vm){
 		return new Promise((resolve,reject) => {
-			http.get(params,true,{
+			http.get("/api/sms/",params,true,{
 				succ: function (res){
 					vm.msg += "callback succ";
 				},
 				fail: function (res){
-					vm.data1.a += "callback fail";
+					vm.obj.a += "callback fail";
 					reject(res);
 				},
 				neterror: function (res){
