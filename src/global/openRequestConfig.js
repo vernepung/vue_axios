@@ -13,7 +13,7 @@
 
 const requestType = {
 	get : 1,
-	get1 : 10,// 访问api.com
+	getLongTimeout : 10,// 访问api.com
 	post : 2,
 	postJson : 3,
 	postFile : 4 // shang

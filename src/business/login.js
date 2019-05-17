@@ -28,7 +28,7 @@ export default {
 	vdata,
 	 getSms(params,vm){
 		return new Promise((resolve,reject) => {
-			http.get("/api/sms/",params,true,{
+			http.get("/api/sms/",{
 				succ: function (res){
 					vm.msg += "callback succ";
 				},
